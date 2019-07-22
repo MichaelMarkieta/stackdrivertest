@@ -1,0 +1,12 @@
+{
+  "name": "stackdrivertest",
+  "version": "1.0.0",
+  "description": "Stackdriver testing",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Michael Markieta <markieta@google.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

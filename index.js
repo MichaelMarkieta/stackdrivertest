@@ -32,4 +32,4 @@ const logger = bunyan.createLogger({
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(port, () => logging.info(`Example app listening on port ${port}!`))
+app.listen(port, () => logger.info(`stackdrivertest listening on port ${port}!`))

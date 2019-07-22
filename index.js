@@ -30,6 +30,28 @@ const logger = bunyan.createLogger({
   ],
 });
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', function (req, res) {
+    res.send('Hello World!')
+})
+
+app.get('/info', function (req, res) {
+    logger.info("log:INFO")
+    res.send('Info!')
+})
+
+app.get('/warning', function (req, res) {
+    logger.warn("log:WARNING")
+    res.send('Warning!')
+})
+
+app.get('/error', function (req, res) {
+    logger.error("log:ERROR")
+    res.send('Error!')
+})
+
+app.get('/critical', function (req, res) {
+    logger.fatal("log.FATAL")
+    res.send('Critical!')
+})
 
 app.listen(port, () => logger.info(`stackdrivertest listening on port ${port}!`))

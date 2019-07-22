@@ -21,17 +21,15 @@ const {LoggingBunyan} = require('@google-cloud/logging-bunyan');
 const app = express()
 const port = 3000
 
-const loggingBunyan = new LoggingBunyan();
-const logger = bunyan.createLogger({
-  name: 'stackdrivertest',
-  streams: [
-    {stream: process.stdout, level: 'info'},
-    loggingBunyan.stream('info'),
-  ],
-});
+var logger = bunyan.createLogger({name: 'stackdrivertest', level: 'debug'});
 
 app.get('/', function (req, res) {
     res.send('Hello World!')
+})
+
+app.get('/debug', function (req, res) {
+    logger.debug("log:DEBUG")
+    res.send('Debug!')
 })
 
 app.get('/info', function (req, res) {
@@ -39,9 +37,9 @@ app.get('/info', function (req, res) {
     res.send('Info!')
 })
 
-app.get('/warning', function (req, res) {
-    logger.warn("log:WARNING")
-    res.send('Warning!')
+app.get('/warn', function (req, res) {
+    logger.warn("log:WARN")
+    res.send('Warn!')
 })
 
 app.get('/error', function (req, res) {
@@ -49,9 +47,9 @@ app.get('/error', function (req, res) {
     res.send('Error!')
 })
 
-app.get('/critical', function (req, res) {
+app.get('/fatal', function (req, res) {
     logger.fatal("log.FATAL")
-    res.send('Critical!')
+    res.send('Fatal!')
 })
 
 app.listen(port, () => logger.info(`stackdrivertest listening on port ${port}!`))

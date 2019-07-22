@@ -2,6 +2,10 @@
   "name": "stackdrivertest",
   "version": "1.0.0",
   "description": "Stackdriver testing",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MichaelMarkieta/stackdrivertest.git"
+  },
   "main": "index.js",
   "scripts": {},
   "author": "Michael Markieta <markieta@google.com>",

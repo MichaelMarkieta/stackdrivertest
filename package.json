@@ -11,6 +11,8 @@
   "author": "Michael Markieta <markieta@google.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "@google-cloud/logging-bunyan": "^1.2.1",
+    "bunyan": "^1.8.12",
     "express": "^4.17.1"
   }
 }

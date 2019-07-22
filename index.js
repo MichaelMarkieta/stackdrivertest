@@ -13,9 +13,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 const express = require('express')
+const bunyan = require('bunyan');
+const {LoggingBunyan} = require('@google-cloud/logging-bunyan');
+
 const app = express()
 const port = 3000
 
+const loggingBunyan = new LoggingBunyan();
+const logger = bunyan.createLogger({
+  name: 'stackdrivertest',
+  streams: [
+    {stream: process.stdout, level: 'info'},
+    loggingBunyan.stream('info'),
+  ],
+});
+
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => logging.info(`Example app listening on port ${port}!`))
